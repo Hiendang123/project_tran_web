@@ -48,8 +48,8 @@ function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
             y2="1025"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#06b6d4" />
-            <stop offset="1" stopColor="#06b6d4" stopOpacity="0" />
+            <stop stopColor="#ba1c20" />
+            <stop offset="1" stopColor="#ba1c20" stopOpacity="0" />
           </linearGradient>
         </defs>
       </svg>
@@ -78,8 +78,8 @@ function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
             y2="913"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#06b6d4" />
-            <stop offset="1" stopColor="#06b6d4" stopOpacity="0" />
+            <stop stopColor="#fcad2d" />
+            <stop offset="1" stopColor="#fcad2d" stopOpacity="0" />
           </linearGradient>
         </defs>
       </svg>
@@ -108,8 +108,8 @@ function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
             y2="801"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#06b6d4" />
-            <stop offset="1" stopColor="#06b6d4" stopOpacity="0" />
+            <stop stopColor="#01a743" />
+            <stop offset="1" stopColor="#01a743" stopOpacity="0" />
           </linearGradient>
         </defs>
       </svg>
@@ -130,21 +130,23 @@ function PlayIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
+const hereContent = {
+  title: 'SMART BREAKER EQUIPMENT',
+  description:
+    'This is a line of smart products developed and distributed by CNC ELECTRIC. This product is used in households, apartments, villas, hotels, restaurants, schools, and factories... The product is designed to be user-friendly, easy to install in existing electrical systems.',
+}
+
 export function Hero() {
   return (
     <div className="overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36">
       <Container>
         <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
           <div className="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
-            <h1 className="text-4xl font-medium tracking-tight text-gray-900">
-              SMART BREAKER EQUIPMENT
+            <h1 className="text-4xl font-bold tracking-tight text-[#ba1c20]">
+              {hereContent.title}
             </h1>
             <p className="mt-6 text-lg text-gray-600">
-              This is a line of smart products developed and distributed by CNC
-              ELECTRIC. This product is used in households, apartments, villas,
-               hotels, restaurants, canteens, schools, and factories... The
-              product is designed to be user-friendly, easy to install in
-              existing electrical systems.
+              {hereContent.description}
             </p>
             {/* <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <AppStoreLink />
@@ -161,10 +163,10 @@ export function Hero() {
             <Image
               src={deviceAtomaat}
               alt=""
-              className="absolute right-[-45%] bottom-[-25%] z-1 max-w-[350px] -translate-x-1/2"
+              className="absolute right-[-45%] bottom-[-35%] z-1 max-w-[350px] -translate-x-1/2"
             />
             <BackgroundIllustration className="absolute top-4 left-1/2 h-[1026px] w-[1026px] -translate-x-1/3 mask-[linear-gradient(to_bottom,white_20%,transparent_75%)] stroke-gray-300/70 sm:top-16 sm:-translate-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0" />
-            <div className="-mx-4 h-[448px] mask-[linear-gradient(to_bottom,white_60%,transparent)] px-9 sm:mx-0 lg:absolute lg:-inset-x-10 lg:-top-10 lg:-bottom-20 lg:h-auto lg:px-0 lg:pt-10 xl:-bottom-32">
+            <div className="-mx-4 h-[448px] mask-[linear-gradient(to_bottom,white_60%,transparent)] px-9 sm:mx-0 lg:absolute lg:-inset-x-10 lg:-top-10 lg:-bottom-20 lg:h-auto lg:px-0 xl:-bottom-32">
               <PhoneFrame className="mx-auto max-w-[366px]" priority>
                 {/* <AppDemo /> */}
                 <Image

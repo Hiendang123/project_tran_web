@@ -6,17 +6,19 @@ import { Certificate } from '@/components/Certificate'
 import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { Reviews } from '@/components/Reviews'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
+import { AdvancedFeatures } from '@/components/AdvancedFeatures'
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <PrimaryFeatures />
       <SecondaryFeatures />
-      <CallToAction />
-      <Reviews />
-      {/* <Pricing /> */}
+      <AdvancedFeatures />
+      <PrimaryFeatures />
       <Certificate />
+      <CallToAction />
+      {/* <Reviews /> */}
+      {/* <Pricing /> */}
       <Faqs />
     </>
   )

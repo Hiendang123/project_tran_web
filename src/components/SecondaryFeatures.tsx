@@ -132,7 +132,7 @@ export function SecondaryFeatures() {
             />
 
             {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black/50 transition-opacity duration-300 group-hover:bg-black/30"></div>
+            <div className="absolute inset-0 bg-[#3d1a1b78] transition-opacity duration-300 group-hover:bg-[#3d1a1bc7]"></div>
 
             {/* Content */}
             <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
