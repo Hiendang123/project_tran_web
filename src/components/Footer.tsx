@@ -20,6 +20,15 @@ function QrCodeBorder(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
+const footerText = {
+  title: 'TRAN',
+  description: 'Safety for your Home',
+  address:
+    'E10/1B Thới Hoà, Vinh Lộc A, Bình Chánh, TP Hồ Chí Minh, Ho Chi Minh City, Vietnam',
+  phone: '091 749 28 28',
+  email: 'Jointran272@gmail.com',
+}
+
 export function Footer() {
   return (
     <footer className="border-t border-gray-200">
@@ -29,12 +38,14 @@ export function Footer() {
             <div className="flex items-center text-gray-900">
               <Logomark className="h-20 w-20 flex-none fill-cyan-500" />
               <div className="ml-4">
-                <p className="text-base font-semibold">TRAN</p>
-                <p className="mt-1 text-sm">Safety for your Home</p>
+                <p className="text-base font-semibold">{footerText.title}</p>
+                <p className="mt-1 text-sm">{footerText.description}</p>
               </div>
             </div>
-            <nav className="mt-11 flex gap-8">
-              <NavLinks />
+            <nav className="mt-3">
+              <p className="text-sm">Address: {footerText.address}</p>
+              <p className="text-sm">Phone: {footerText.phone}</p>
+              <p className="text-sm">Email: {footerText.email}</p>
             </nav>
           </div>
           <div className="group relative -mx-4 flex items-center self-stretch p-4 transition-colors hover:bg-gray-100 sm:self-auto sm:rounded-2xl lg:mx-0 lg:self-auto lg:p-6">

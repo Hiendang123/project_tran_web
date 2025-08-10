@@ -45,7 +45,7 @@ const industries = [
   {
     name: 'Hotels, Restaurants',
     englishName: 'Hospitality Industry',
-    bgImage: hotelImage,  
+    bgImage: hotelImage,
     overlay: 'from-purple-600/80 to-pink-500/80',
   },
   {
@@ -88,7 +88,6 @@ export function SecondaryFeatures() {
   const itemsPerPage = 6
   const slideWidthPercent = 100 / itemsPerPage
 
-  // Duplicate the first page to allow seamless looping
   const extendedIndustries = [
     ...industries,
     ...industries.slice(0, itemsPerPage),
@@ -97,21 +96,16 @@ export function SecondaryFeatures() {
   const nextSlide = () => {
     setIsAnimating(true)
     setCurrentIndex((prevIndex) => {
-      // allow moving onto the duplicated items for seamless transition
       if (prevIndex >= industries.length) return 1
       return prevIndex + 1
     })
   }
 
   const prevSlide = () => {
-    // When at the first real item, jump to the cloned edge then move back one
     setCurrentIndex((prevIndex) => {
       if (prevIndex === 0) {
-        // jump to the cloned block without animation then animate back one step
         setIsAnimating(false)
-        // set to the cloned tail (equal to industries.length)
         const jumpIndex = industries.length
-        // next tick: enable animation and step back one
         setTimeout(() => {
           setIsAnimating(true)
           setCurrentIndex(industries.length - 1)
@@ -123,7 +117,6 @@ export function SecondaryFeatures() {
     })
   }
 
-  // Autoplay
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (!isPaused) {
@@ -143,7 +136,6 @@ export function SecondaryFeatures() {
       aria-label="Industry applications"
       className="relative bg-white"
     >
-      {/* Slider */}
       <div
         className="relative h-[500px] overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
@@ -155,11 +147,9 @@ export function SecondaryFeatures() {
             transform: `translateX(-${currentIndex * slideWidthPercent}%)`,
           }}
           onTransitionEnd={() => {
-            // when reaching the duplicate block, jump back to the real start without animation
             if (currentIndex >= industries.length) {
               setIsAnimating(false)
               setCurrentIndex(0)
-              // re-enable animation on next tick
               setTimeout(() => setIsAnimating(true), 20)
             }
           }}
