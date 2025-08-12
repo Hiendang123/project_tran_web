@@ -451,6 +451,16 @@ function FeaturesDesktop() {
     { leading: true },
   )
 
+  // Auto-advance the red selection every 3.5 seconds by moving down one item
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const nextIndex = (selectedIndex + 1) % featuredContent.items.length
+      onChange(nextIndex)
+    }, 3000)
+
+    return () => clearTimeout(timer)
+  }, [selectedIndex, onChange])
+
   return (
     <TabGroup
       className="grid grid-cols-12 items-center gap-8 lg:gap-16 xl:gap-24"
@@ -521,13 +531,13 @@ function FeaturesDesktop() {
           </div>
         ))}
       </TabList>
-      <div className="relative col-span-6">
+      <div className="relative col-span-6 min-h-[380px] overflow-hidden sm:min-h-[420px] lg:min-h-[480px]">
         <Image
-          className="absolute top-1/2 left-1/2 z-1 -translate-x-1/2 -translate-y-1/2"
+          className="pointer-events-none absolute top-1/2 left-1/2 z-10 h-auto w-[260px] -translate-x-1/2 -translate-y-1/2 sm:w-[320px] lg:w-[380px]"
           src={aptomatWifi}
           alt=""
         />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute top-1/2 left-1/2 aspect-square w-full max-w-[560px] -translate-x-1/2 -translate-y-1/2">
           <CircleBackground color="#fcad2d" className="animate-spin-slower" />
         </div>
         {/* <PhoneFrame className="z-10 mx-auto w-full max-w-[366px]">
@@ -670,7 +680,7 @@ export function PrimaryFeatures() {
       <div className="mt-16 md:hidden">
         <FeaturesMobile />
       </div>
-      <Container className="hidden md:mt-20 md:block">
+      <Container className="hidden overflow-hidden md:mt-20 md:block">
         <FeaturesDesktop />
       </Container>
     </section>

@@ -85,7 +85,14 @@ export function SecondaryFeatures() {
   const [isPaused, setIsPaused] = useState(false)
   const [isAnimating, setIsAnimating] = useState(true)
 
-  const itemsPerPage = 6
+  // Responsive items per page (mobile/tablet/desktop)
+  const getItemsPerPage = () => {
+    if (typeof window === 'undefined') return 6
+    if (window.innerWidth < 640) return 2
+    if (window.innerWidth < 1024) return 4
+    return 6
+  }
+  const [itemsPerPage, setItemsPerPage] = useState(getItemsPerPage())
   const slideWidthPercent = 100 / itemsPerPage
 
   // Duplicate the first page to allow seamless looping
@@ -122,6 +129,13 @@ export function SecondaryFeatures() {
       return prevIndex - 1
     })
   }
+
+  // Handle resize to recalc items per page
+  useEffect(() => {
+    const onResize = () => setItemsPerPage(getItemsPerPage())
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
 
   // Autoplay
   useEffect(() => {
@@ -167,7 +181,7 @@ export function SecondaryFeatures() {
           {extendedIndustries.map((industry, index) => (
             <div
               key={`${industry.name}-${index}`}
-              className="group relative h-full shrink-0 basis-1/6 cursor-pointer overflow-hidden"
+              className="group relative h-full shrink-0 basis-1/2 cursor-pointer overflow-hidden sm:basis-1/4 lg:basis-1/6"
             >
               <Image
                 src={industry.bgImage}

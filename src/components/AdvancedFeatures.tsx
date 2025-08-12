@@ -91,10 +91,10 @@ function accidentIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 function FeaturesDesktop() {
   return (
     <TabGroup
-      className="grid grid-cols-12 items-center gap-8 lg:gap-16 xl:gap-24"
+      className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-center lg:gap-16 xl:gap-24"
       vertical
     >
-      <TabList className="relative z-10 order-first col-span-6 space-y-6">
+      <TabList className="relative z-10 order-first space-y-6 md:col-span-6">
         <h2 className="text-3xl font-medium tracking-tight">
           {featureContent.itemTitle}
         </h2>
@@ -120,13 +120,16 @@ function FeaturesDesktop() {
           </div>
         ))}
       </TabList>
-      <div className="relative col-span-6">
+      <div className="relative overflow-hidden md:col-span-6">
         <Image
-          className="absolute top-1/2 left-1/2 z-1 -translate-x-1/2 -translate-y-1/2"
+          className="absolute top-1/2 left-1/2 z-1 hidden -translate-x-1/2 -translate-y-1/2 md:block"
           src={aptomatWifi}
           alt=""
         />
-        <div className="">
+        <div className="mx-auto max-w-[360px] md:hidden">
+          <Image src={aptomatWifi} alt="" />
+        </div>
+        <div className="relative mx-auto hidden aspect-square w-full max-w-[560px] overflow-hidden md:block">
           <CircleBackground color="#ba1c20" className="animate-spin-slower" />
         </div>
       </div>

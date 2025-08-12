@@ -93,14 +93,14 @@ export function Header() {
           <div className="relative z-10 flex items-center gap-16">
             <Link href="/" aria-label="Home">
               {/* <Logo className="h-10 w-auto" /> */}
-              <Logomark className="w-[150px] fill-cyan-500" />
+              <Logomark className="w-[120px] fill-cyan-500 sm:w-[150px]" />
             </Link>
             <div className="hidden lg:flex lg:gap-10">
               <NavLinks />
             </div>
           </div>
           <div className="flex items-center gap-6">
-            {/* <Popover className="lg:hidden">
+            <Popover className="lg:hidden">
               {({ open }) => (
                 <>
                   <PopoverButton
@@ -194,7 +194,7 @@ export function Header() {
                   </AnimatePresence>
                 </>
               )}
-            </Popover> */}
+            </Popover>
             <div className="flex items-center gap-6 max-lg:hidden">
               <Button
                 className="border-0 bg-[#0d2871] text-white"

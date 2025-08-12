@@ -11,8 +11,8 @@ export function CircleBackground({
   return (
     <svg
       viewBox="0 0 558 558"
-      width="558"
-      height="558"
+      width="100%"
+      height="100%"
       fill="none"
       aria-hidden="true"
       {...props}
