@@ -28,6 +28,7 @@ import {
   TupleLogo,
 } from '@/components/StockLogos'
 import Image from 'next/image'
+import aptomatWifi from '@/images/aptomat-4.png'
 
 const MotionAppScreenHeader = motion(AppScreen.Header)
 const MotionAppScreenBody = motion(AppScreen.Body)
@@ -93,6 +94,13 @@ const features = [
     screen: InvestScreen,
   },
 ]
+
+const featuredContent = {
+  title: 'Outstanding features of smart circuit breaker.',
+  description:
+    'Smart circuit breakers are designed to provide comprehensive protection and control over electrical systems, ensuring safety and efficiency in various applications.',
+  items: features,
+}
 
 function DeviceUserIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -451,20 +459,22 @@ function FeaturesDesktop() {
       vertical
     >
       <TabList className="relative z-10 order-last col-span-6 space-y-6">
-        {features.map((feature, featureIndex) => (
+        {featuredContent.items.map((feature, featureIndex) => (
           <div
             key={feature.name}
-            className="relative rounded-2xl transition-colors hover:bg-gray-800/30"
+            className="relative rounded-2xl bg-white transition-colors"
           >
             {featureIndex === selectedIndex && (
               <motion.div
                 layoutId="activeBackground"
-                className="absolute inset-0 bg-gray-800"
+                className="absolute inset-0 bg-[#ba1c20]"
                 initial={{ borderRadius: 16 }}
               />
             )}
             <div className="relative z-10 p-8">
-              <h3 className="text-lg font-semibold text-white">
+              <h3
+                className={`text-lg font-semibold ${featureIndex === selectedIndex ? 'text-white' : 'text-gray-900'}`}
+              >
                 <Tab className="text-left data-selected:not-data-focus:outline-hidden">
                   <span className="absolute inset-0 rounded-2xl" />
                   {feature.name}
@@ -474,14 +484,18 @@ function FeaturesDesktop() {
                 feature.name === 'Preventive functions' ||
                 feature.name === 'Control Functions' ? (
                   <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1">
-                    <ul className="list-inside list-disc text-sm text-gray-400">
+                    <ul
+                      className={`list-inside list-disc text-sm ${featureIndex === selectedIndex ? 'text-white' : 'text-gray-400'}`}
+                    >
                       {feature.description
                         .slice(0, Math.ceil(feature.description.length / 2))
                         .map((item) => (
                           <li key={item}>{item}</li>
                         ))}
                     </ul>
-                    <ul className="list-inside list-disc text-sm text-gray-400">
+                    <ul
+                      className={`list-inside list-disc text-sm ${featureIndex === selectedIndex ? 'text-white' : 'text-gray-400'}`}
+                    >
                       {feature.description
                         .slice(Math.ceil(feature.description.length / 2))
                         .map((item) => (
@@ -490,7 +504,9 @@ function FeaturesDesktop() {
                     </ul>
                   </div>
                 ) : (
-                  <ul className="mt-2 list-inside list-disc text-sm text-gray-400">
+                  <ul
+                    className={`mt-2 list-inside list-disc text-sm ${featureIndex === selectedIndex ? 'text-white' : 'text-gray-400'}`}
+                  >
                     {feature.description.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
@@ -506,10 +522,15 @@ function FeaturesDesktop() {
         ))}
       </TabList>
       <div className="relative col-span-6">
+        <Image
+          className="absolute top-1/2 left-1/2 z-1 -translate-x-1/2 -translate-y-1/2"
+          src={aptomatWifi}
+          alt=""
+        />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <CircleBackground color="#13B5C8" className="animate-spin-slower" />
+          <CircleBackground color="#fcad2d" className="animate-spin-slower" />
         </div>
-        <PhoneFrame className="z-10 mx-auto w-full max-w-[366px]">
+        {/* <PhoneFrame className="z-10 mx-auto w-full max-w-[366px]">
           <TabPanels as={Fragment}>
             <AnimatePresence
               initial={false}
@@ -531,7 +552,7 @@ function FeaturesDesktop() {
               )}
             </AnimatePresence>
           </TabPanels>
-        </PhoneFrame>
+        </PhoneFrame> */}
         {/* <Image src={AtomaatOut} alt="Atomaat Out" /> */}
       </div>
     </TabGroup>
@@ -639,13 +660,10 @@ export function PrimaryFeatures() {
       <Container>
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-medium tracking-tight">
-            Outstanding features of smart circuit breaker.
+            {featuredContent.title}
           </h2>
           <p className="mt-2 text-lg text-gray-400">
-            The table lists the outstanding features of the CNC Electric Smart
-            Circuit Breaker, including main functions, prevention functions
-            (such as over voltage, short circuit), control functions (direct,
-            remote) and warning functions (terminal, via SMS).
+            {featuredContent.description}
           </p>
         </div>
       </Container>

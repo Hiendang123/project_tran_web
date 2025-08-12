@@ -7,6 +7,7 @@ import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { Reviews } from '@/components/Reviews'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { AdvancedFeatures } from '@/components/AdvancedFeatures'
+import { ContactForm } from '@/components/ContactForm'
 
 export default function Home() {
   return (
@@ -16,7 +17,8 @@ export default function Home() {
       <AdvancedFeatures />
       <PrimaryFeatures />
       <Certificate />
-      <CallToAction />
+      <ContactForm />
+      {/* <CallToAction /> */}
       {/* <Reviews /> */}
       {/* <Pricing /> */}
       <Faqs />

@@ -1,6 +1,6 @@
 'use client'
 
-import { useId, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 import { Container } from '@/components/Container'
@@ -82,67 +82,110 @@ const industries = [
 
 export function SecondaryFeatures() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const [isAnimating, setIsAnimating] = useState(true)
+
   const itemsPerPage = 6
+  const slideWidthPercent = 100 / itemsPerPage
+
+  // Duplicate the first page to allow seamless looping
+  const extendedIndustries = [
+    ...industries,
+    ...industries.slice(0, itemsPerPage),
+  ]
 
   const nextSlide = () => {
+    setIsAnimating(true)
     setCurrentIndex((prevIndex) => {
-      const nextIndex = prevIndex + 1
-      // Nếu đã đến cuối danh sách, quay về đầu
-      return nextIndex >= industries.length ? 0 : nextIndex
+      // allow moving onto the duplicated items for seamless transition
+      if (prevIndex >= industries.length) return 1
+      return prevIndex + 1
     })
   }
 
   const prevSlide = () => {
+    // When at the first real item, jump to the cloned edge then move back one
     setCurrentIndex((prevIndex) => {
-      const prevIndexValue = prevIndex - 1
-      // Nếu đã về đầu danh sách, quay về cuối
-      return prevIndexValue < 0 ? industries.length - 1 : prevIndexValue
+      if (prevIndex === 0) {
+        // jump to the cloned block without animation then animate back one step
+        setIsAnimating(false)
+        // set to the cloned tail (equal to industries.length)
+        const jumpIndex = industries.length
+        // next tick: enable animation and step back one
+        setTimeout(() => {
+          setIsAnimating(true)
+          setCurrentIndex(industries.length - 1)
+        }, 20)
+        return jumpIndex
+      }
+      setIsAnimating(true)
+      return prevIndex - 1
     })
   }
 
-  const getVisibleItems = () => {
-    const items = []
-    for (let i = 0; i < itemsPerPage; i++) {
-      const index = (currentIndex + i) % industries.length
-      items.push(industries[index])
-    }
-    return items
-  }
+  // Autoplay
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (!isPaused) {
+        setIsAnimating(true)
+        setCurrentIndex((prev) => {
+          if (prev >= industries.length) return 1
+          return prev + 1
+        })
+      }
+    }, 3000)
+    return () => clearInterval(intervalId)
+  }, [isPaused])
 
   return (
     <section
-      id="secondary-features"
+      id="features"
       aria-label="Industry applications"
       className="relative bg-white"
     >
-      {/* Full Screen Banner Layout */}
-      <div className="grid h-[500px] grid-cols-6 overflow-hidden">
-        {getVisibleItems().map((industry, index) => (
-          <div
-            key={`${industry.name}-${currentIndex}-${index}`}
-            className="group relative cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105"
-          >
-            {/* Background Image */}
-            <Image
-              src={industry.bgImage}
-              alt={industry.name}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
-              priority={index < 2}
-            />
-
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-[#3d1a1b78] transition-opacity duration-300 group-hover:bg-[#3d1a1bc7]"></div>
-
-            {/* Content */}
-            <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
-              <h3 className="mb-2 text-lg leading-tight font-semibold">
-                {industry.name}
-              </h3>
-              <p className="text-sm opacity-90">{industry.englishName}</p>
+      {/* Slider */}
+      <div
+        className="relative h-[500px] overflow-hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <div
+          className={`flex h-full ${isAnimating ? 'transition-transform duration-700 ease-out' : 'transition-none'}`}
+          style={{
+            transform: `translateX(-${currentIndex * slideWidthPercent}%)`,
+          }}
+          onTransitionEnd={() => {
+            // when reaching the duplicate block, jump back to the real start without animation
+            if (currentIndex >= industries.length) {
+              setIsAnimating(false)
+              setCurrentIndex(0)
+              // re-enable animation on next tick
+              setTimeout(() => setIsAnimating(true), 20)
+            }
+          }}
+        >
+          {extendedIndustries.map((industry, index) => (
+            <div
+              key={`${industry.name}-${index}`}
+              className="group relative h-full shrink-0 basis-1/6 cursor-pointer overflow-hidden"
+            >
+              <Image
+                src={industry.bgImage}
+                alt={industry.name}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                priority={index < 2}
+              />
+              <div className="absolute inset-0 bg-black/50 transition-opacity duration-300 group-hover:bg-black/30"></div>
+              <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
+                <h3 className="mb-2 text-lg leading-tight font-semibold">
+                  {industry.name}
+                </h3>
+                <p className="text-sm opacity-90">{industry.englishName}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* Navigation Buttons */}
@@ -188,18 +231,24 @@ export function SecondaryFeatures() {
 
       {/* Dots Indicator */}
       <div className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 space-x-2">
-        {industries.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`h-1 w-4 rounded-full transition-all duration-300 ${
-              index === currentIndex
-                ? 'bg-white'
-                : 'bg-white/50 hover:bg-white/70'
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
+        {industries.map((_, index) => {
+          const activeIndex = currentIndex % industries.length
+          return (
+            <button
+              key={index}
+              onClick={() => {
+                setIsAnimating(true)
+                setCurrentIndex(index)
+              }}
+              className={`h-1 w-4 rounded-full transition-all duration-300 ${
+                index === activeIndex
+                  ? 'bg-white'
+                  : 'bg-white/50 hover:bg-white/70'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          )
+        })}
       </div>
     </section>
   )

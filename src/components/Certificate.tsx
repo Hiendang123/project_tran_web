@@ -41,7 +41,7 @@ export function Certificate() {
     <section
       id="certificate"
       aria-labelledby="certificate-title"
-      className="border-t border-gray-200 bg-white py-20 sm:py-32"
+      className="bg-white py-20 sm:py-32"
     >
       <Container>
         <div className="mx-auto max-w-2xl text-center">

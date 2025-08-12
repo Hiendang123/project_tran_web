@@ -137,7 +137,7 @@ function FeaturesDesktop() {
 export function AdvancedFeatures() {
   return (
     <section
-      id="features"
+      id="safety"
       aria-label={featureContent.title}
       className="py-20 sm:py-32"
     >
