@@ -94,8 +94,8 @@ function FeaturesDesktop() {
       className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-center lg:gap-16 xl:gap-24"
       vertical
     >
-      <TabList className="relative z-10 order-first space-y-6 md:col-span-6">
-        <h2 className="text-3xl font-medium tracking-tight">
+      <TabList className="relative z-10 order-first space-y-4 md:col-span-6 md:space-y-6">
+        <h2 className="text-2xl font-medium tracking-tight md:text-3xl">
           {featureContent.itemTitle}
         </h2>
         {features.map((feature, featureIndex) => (
@@ -103,35 +103,41 @@ function FeaturesDesktop() {
             key={feature.name}
             className="transition-color relative rounded-2xl bg-white shadow-md shadow-gray-900/5"
           >
-            <div className="relative z-10 p-8">
-              <div className="flex items-center gap-4">
-                <feature.icon className="h-8 w-8" />
-                <h3 className="text-lg font-semibold text-gray-900">
+            <div className="relative z-10 p-4 md:p-6 lg:p-8">
+              <div className="flex items-center gap-3 md:gap-4">
+                <feature.icon className="h-6 w-6 flex-shrink-0 md:h-8 md:w-8" />
+                <h3 className="text-base font-semibold text-gray-900 md:text-lg">
                   <Tab className="text-left data-selected:not-data-focus:outline-hidden">
                     <span className="absolute inset-0 rounded-2xl" />
                     {feature.name}
                   </Tab>
                 </h3>
               </div>
-              {/* <p className="mt-2 text-sm text-gray-400">
-                {feature.description}
-              </p> */}
             </div>
           </div>
         ))}
       </TabList>
-      <div className="relative overflow-hidden md:col-span-6">
-        <Image
-          className="absolute top-1/2 left-1/2 z-1 hidden -translate-x-1/2 -translate-y-1/2 md:block"
-          src={aptomatWifi}
-          alt=""
-        />
-        <div className="mx-auto max-w-[360px] md:hidden">
-          <Image src={aptomatWifi} alt="" />
+      <div className="relative order-first md:order-last md:col-span-6">
+        {/* Desktop/Tablet Image with CircleBackground */}
+        <div className="relative">
+          <Image
+            className="absolute top-1/2 left-1/2 z-10 max-w-[450px] -translate-x-1/2 -translate-y-1/2 lg:max-w-[600px]"
+            src={aptomatWifi}
+            alt="Smart Circuit Breaker"
+          />
+          <div className="relative mx-auto aspect-square w-full max-w-[400px] lg:max-w-[560px]">
+            <CircleBackground color="#ba1c20" className="animate-spin-slower" />
+          </div>
         </div>
-        <div className="relative mx-auto hidden aspect-square w-full max-w-[560px] overflow-hidden md:block">
-          <CircleBackground color="#ba1c20" className="animate-spin-slower" />
-        </div>
+
+        {/* Mobile Image */}
+        {/* <div className="mx-auto max-w-[280px] md:hidden">
+          <Image 
+            src={aptomatWifi} 
+            alt="Smart Circuit Breaker"
+            className="w-full h-auto"
+          />
+        </div> */}
       </div>
     </TabGroup>
   )
@@ -142,22 +148,19 @@ export function AdvancedFeatures() {
     <section
       id="safety"
       aria-label={featureContent.title}
-      className="py-20 sm:py-32"
+      className="py-16 sm:py-20 lg:py-32"
     >
       <Container>
-        <div className="mx-auto">
-          <h2 className="text-3xl font-medium tracking-tight">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-2xl font-medium tracking-tight sm:text-3xl lg:text-4xl">
             {featureContent.title}
           </h2>
-          <p className="mt-2 text-lg text-gray-400">
+          <p className="mt-4 text-base text-gray-400 sm:text-lg lg:text-xl">
             {featureContent.description}
           </p>
         </div>
       </Container>
-      {/* <div className="mt-16 md:hidden">
-        <FeaturesMobile />
-      </div> */}
-      <Container className="md:mt-20 md:block">
+      <Container className="mt-12 md:mt-20">
         <FeaturesDesktop />
       </Container>
     </section>

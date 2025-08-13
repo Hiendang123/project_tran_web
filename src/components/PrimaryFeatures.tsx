@@ -463,12 +463,12 @@ function FeaturesDesktop() {
 
   return (
     <TabGroup
-      className="grid grid-cols-12 items-center gap-8 lg:gap-16 xl:gap-24"
+      className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center lg:gap-16 xl:gap-24"
       selectedIndex={selectedIndex}
       onChange={onChange}
       vertical
     >
-      <TabList className="relative z-10 order-last col-span-6 space-y-6">
+      <TabList className="relative z-10 order-last space-y-4 lg:order-last lg:col-span-6 lg:space-y-6">
         {featuredContent.items.map((feature, featureIndex) => (
           <div
             key={feature.name}
@@ -481,9 +481,9 @@ function FeaturesDesktop() {
                 initial={{ borderRadius: 16 }}
               />
             )}
-            <div className="relative z-10 p-8">
+            <div className="relative z-10 p-4 sm:p-6 lg:p-8">
               <h3
-                className={`text-lg font-semibold ${featureIndex === selectedIndex ? 'text-white' : 'text-gray-900'}`}
+                className={`text-base font-semibold sm:text-lg ${featureIndex === selectedIndex ? 'text-white' : 'text-gray-900'}`}
               >
                 <Tab className="text-left data-selected:not-data-focus:outline-hidden">
                   <span className="absolute inset-0 rounded-2xl" />
@@ -493,7 +493,7 @@ function FeaturesDesktop() {
               {Array.isArray(feature.description) ? (
                 feature.name === 'Preventive functions' ||
                 feature.name === 'Control Functions' ? (
-                  <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1">
+                  <div className="mt-2 grid grid-cols-1 gap-y-1 sm:grid-cols-2 sm:gap-x-4">
                     <ul
                       className={`list-inside list-disc text-sm ${featureIndex === selectedIndex ? 'text-white' : 'text-gray-400'}`}
                     >
@@ -531,39 +531,15 @@ function FeaturesDesktop() {
           </div>
         ))}
       </TabList>
-      <div className="relative col-span-6 min-h-[380px] overflow-hidden sm:min-h-[420px] lg:min-h-[480px]">
+      <div className="relative order-first lg:order-first lg:col-span-6">
         <Image
-          className="pointer-events-none absolute top-1/2 left-1/2 z-10 h-auto w-[260px] -translate-x-1/2 -translate-y-1/2 sm:w-[320px] lg:w-[380px]"
+          className="pointer-events-none absolute top-1/2 left-1/2 z-10 w-full max-w-[300px] -translate-x-1/2 -translate-y-1/2 sm:max-w-[400px] lg:max-w-[600px]"
           src={aptomatWifi}
-          alt=""
+          alt="Smart Circuit Breaker"
         />
-        <div className="absolute top-1/2 left-1/2 aspect-square w-full max-w-[560px] -translate-x-1/2 -translate-y-1/2">
+        <div className="mx-auto aspect-square w-full max-w-[350px] sm:max-w-[450px] lg:max-w-[560px]">
           <CircleBackground color="#fcad2d" className="animate-spin-slower" />
         </div>
-        {/* <PhoneFrame className="z-10 mx-auto w-full max-w-[366px]">
-          <TabPanels as={Fragment}>
-            <AnimatePresence
-              initial={false}
-              custom={{ isForwards, changeCount }}
-            >
-              {features.map((feature, featureIndex) =>
-                selectedIndex === featureIndex ? (
-                  <TabPanel
-                    static
-                    key={feature.name + changeCount}
-                    className="col-start-1 row-start-1 flex focus:outline-offset-32 data-selected:not-data-focus:outline-hidden"
-                  >
-                    <feature.screen
-                      animated
-                      custom={{ isForwards, changeCount }}
-                    />
-                  </TabPanel>
-                ) : null,
-              )}
-            </AnimatePresence>
-          </TabPanels>
-        </PhoneFrame> */}
-        {/* <Image src={AtomaatOut} alt="Atomaat Out" /> */}
       </div>
     </TabGroup>
   )
@@ -665,22 +641,19 @@ export function PrimaryFeatures() {
     <section
       id="features"
       aria-label="Features for investing all your money"
-      className="bg-gray-100 py-20 sm:py-32"
+      className="bg-gray-100 py-16 sm:py-20 lg:py-32"
     >
       <Container>
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-medium tracking-tight">
+          <h2 className="text-2xl font-medium tracking-tight sm:text-3xl lg:text-4xl">
             {featuredContent.title}
           </h2>
-          <p className="mt-2 text-lg text-gray-400">
+          <p className="mt-4 text-base text-gray-400 sm:text-lg lg:text-xl">
             {featuredContent.description}
           </p>
         </div>
       </Container>
-      <div className="mt-16 md:hidden">
-        <FeaturesMobile />
-      </div>
-      <Container className="hidden overflow-hidden md:mt-20 md:block">
+      <Container className="mt-12 sm:mt-16 lg:mt-20">
         <FeaturesDesktop />
       </Container>
     </section>

@@ -2,6 +2,18 @@
 
 @plugin '@tailwindcss/forms';
 
+/* Global smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 @theme {
   --text-*: initial;
   --text-xs: 0.75rem;

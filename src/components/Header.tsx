@@ -74,12 +74,61 @@ function MobileNavLink(
   props: Omit<
     React.ComponentPropsWithoutRef<typeof PopoverButton<typeof Link>>,
     'as' | 'className'
-  >,
+  > & { href: string },
 ) {
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    // Only handle smooth scroll for anchor links (starting with #)
+    if (href.includes('#')) {
+      e.preventDefault()
+
+      // Close the mobile menu by clicking outside (simulate)
+      document.body.click()
+
+      // Extract the section ID from href (e.g., "/#safety" -> "safety")
+      const sectionId = href.split('#')[1]
+
+      if (sectionId) {
+        setTimeout(() => {
+          const element = document.getElementById(sectionId)
+          if (element) {
+            // Get header height dynamically after menu closes
+            const header = document.querySelector('header')
+            const headerHeight = header?.getBoundingClientRect().height || 0
+
+            // Get element's position relative to document
+            const elementRect = element.getBoundingClientRect()
+            const elementTop = elementRect.top + window.pageYOffset
+
+            // Calculate exact scroll position to put section top at viewport top
+            // accounting for fixed header
+            const scrollPosition = elementTop - headerHeight
+
+            window.scrollTo({
+              top: scrollPosition,
+              behavior: 'smooth',
+            })
+          }
+        }, 300) // Small delay to let menu close
+      } else if (href === '/') {
+        // Handle home link - scroll to top
+        setTimeout(() => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          })
+        }, 300)
+      }
+    }
+  }
+
   return (
     <PopoverButton
       as={Link}
       className="block text-base/7 tracking-tight text-gray-700"
+      onClick={(e) => handleSmoothScroll(e, props.href)}
       {...props}
     />
   )
@@ -93,7 +142,7 @@ export function Header() {
           <div className="relative z-10 flex items-center gap-16">
             <Link href="/" aria-label="Home">
               {/* <Logo className="h-10 w-auto" /> */}
-              <Logomark className="w-[120px] fill-cyan-500 sm:w-[150px]" />
+              <Logomark className="w-[120px] sm:w-[150px]" />
             </Link>
             <div className="hidden lg:flex lg:gap-10">
               <NavLinks />
@@ -139,14 +188,15 @@ export function Header() {
                           className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-gray-50 px-6 pt-32 pb-6 shadow-2xl shadow-gray-900/20"
                         >
                           <div className="space-y-4">
+                            <MobileNavLink href="/">Home</MobileNavLink>
+                            <MobileNavLink href="/#safety">
+                              Safety
+                            </MobileNavLink>
                             <MobileNavLink href="/#features">
                               Features
                             </MobileNavLink>
-                            <MobileNavLink href="/#reviews">
-                              Reviews
-                            </MobileNavLink>
-                            <MobileNavLink href="/#pricing">
-                              Pricing
+                            <MobileNavLink href="/#certificates">
+                              Certificates
                             </MobileNavLink>
                             <MobileNavLink href="/#faqs">FAQs</MobileNavLink>
                           </div>
@@ -197,7 +247,7 @@ export function Header() {
             </Popover>
             <div className="flex items-center gap-6 max-lg:hidden">
               <Button
-                className="border-0 bg-[#0d2871] text-white"
+                className="border-1 border-[#ba1c20] text-[#ba1c20]"
                 href="/contact"
                 variant="outline"
               >

@@ -8,17 +8,59 @@ export function NavLinks() {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   let timeoutRef = useRef<number | null>(null)
 
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    // Only handle smooth scroll for anchor links (starting with #)
+    if (href.includes('#')) {
+      e.preventDefault()
+
+      // Extract the section ID from href (e.g., "/#safety" -> "safety")
+      const sectionId = href.split('#')[1]
+
+      if (sectionId) {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          // Get header height dynamically
+          const header = document.querySelector('header')
+          const headerHeight = header?.getBoundingClientRect().height || 0
+
+          // Get element's position relative to document
+          const elementRect = element.getBoundingClientRect()
+          const elementTop = elementRect.top + window.pageYOffset
+
+          // Calculate exact scroll position to put section top at viewport top
+          // accounting for fixed header
+          const scrollPosition = elementTop - headerHeight
+
+          window.scrollTo({
+            top: scrollPosition,
+            behavior: 'smooth',
+          })
+        }
+      } else if (href === '/') {
+        // Handle home link - scroll to top
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        })
+      }
+    }
+  }
+
   return [
     ['Home', '/'],
     ['Safety', '/#safety'],
-    ['Certificates', '/#certificates'],
     ['Features', '/#features'],
+    ['Certificates', '/#certificates'],
     ['FAQs', '/#faqs'],
   ].map(([label, href], index) => (
     <Link
       key={label}
       href={href}
-      className="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-0"
+      className="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-xl font-bold text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-0"
+      onClick={(e) => handleSmoothScroll(e, href)}
       onMouseEnter={() => {
         if (timeoutRef.current) {
           window.clearTimeout(timeoutRef.current)

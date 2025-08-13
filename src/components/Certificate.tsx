@@ -39,7 +39,7 @@ const certificates = [
 export function Certificate() {
   return (
     <section
-      id="certificate"
+      id="certificates"
       aria-labelledby="certificate-title"
       className="bg-white py-20 sm:py-32"
     >

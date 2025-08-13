@@ -152,11 +152,7 @@ export function SecondaryFeatures() {
   }, [isPaused])
 
   return (
-    <section
-      id="features"
-      aria-label="Industry applications"
-      className="relative bg-white"
-    >
+    <section aria-label="Industry applications" className="relative bg-white">
       {/* Slider */}
       <div
         className="relative h-[500px] overflow-hidden"
