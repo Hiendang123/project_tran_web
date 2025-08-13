@@ -11,36 +11,44 @@ import aptomatWifi from '@/images/aptomat-wifi.png'
 
 const features = [
   {
-    name: 'Giật điện, chập điện',
+    name: 'Electric Shock, Short Circuit',
     description:
       'For every friend you invite to Pocket, you get insider notifications 5 seconds sooner. And it’s 10 seconds if you invite an insider.',
     icon: flugIcon,
   },
   {
-    name: 'Cháy nổ do điện',
+    name: 'Electrical Fire and Explosion',
     description:
       'Get a push notification every time we find out something that’s going to lower the share price on your holdings so you can sell before the information hits the public markets.',
     icon: fireIcon,
   },
   {
-    name: 'Hỏng các thiết bị điện do nhiễm nước',
+    name: 'Damage to Electrical Devices from Water Exposure',
     description:
       'We hide your stock purchases behind thousands of anonymous trading accounts, so suspicious activity can never be traced back to you.',
     icon: waterIcon,
   },
   {
-    name: 'Các tai nạn về điện',
+    name: 'Electrical Accidents',
     description:
       'We hide your stock purchases behind thousands of anonymous trading accounts, so suspicious activity can never be traced back to you.',
     icon: accidentIcon,
   },
 ]
 
-const featureContent = {
+const featureContentVN = {
   title: 'Vì một cuộc sống an toàn',
   description:
     'Bộ sản phẩm an toàn điện của CNC ELECTRIC cho phép loại bỏ hầu hết các nguy cơ về điện như: Giật điện, quá áp, thấp áp, quá tải, quá nhiệt, ngăn mạch, sét lan truyền, rò rỉ điện thiết bị điện ngâm nước, cháy do điện... Nâng cao mức độ bảo vệ an toàn lên mức cao nhất, và là một trong những dòng sản phẩm tiên phong với công nghệ hàng đầu trong lĩnh vực an toàn điện.',
   itemTitle: 'Gạt bỏ hoàn toàn các nỗi lo',
+  item: features,
+}
+
+const featureContent = {
+  title: 'For a Safe Life',
+  description:
+    'CNC ELECTRIC electrical safety product line eliminates most electrical hazards such as electric shock, overvoltage, undervoltage, overload, overheating, short circuit, lightning surge, electrical leakage from submerged equipment, and fire caused by electricity. It maximizes the level of safety protection and is one of the pioneering product lines with leading technology in the field of electrical safety.',
+  itemTitle: 'Completely Eliminate All Concerns',
   item: features,
 }
 
