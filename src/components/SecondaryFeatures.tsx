@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 import { Container } from '@/components/Container'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 // Import tất cả ảnh
 import bankImage from '@/images/bank.jpg'
@@ -17,73 +18,75 @@ import energyStationImage from '@/images/energy-station.jpg'
 import schoolImage from '@/images/school.jpg'
 import chargingImage from '@/images/charging-electric-cars-at-home.jpg'
 
-const industries = [
-  {
-    name: 'Banks',
-    englishName: 'Financial Institutions',
-    bgImage: bankImage,
-    overlay: 'from-blue-900/80 to-gray-900/80',
-  },
-  {
-    name: 'Residential areas',
-    englishName: 'Housing Communities',
-    bgImage: residentialImage,
-    overlay: 'from-gray-800/80 to-blue-800/80',
-  },
-  {
-    name: 'Offices – High-rise buildings',
-    englishName: 'Commercial Buildings',
-    bgImage: buildingImage,
-    overlay: 'from-orange-600/80 to-yellow-500/80',
-  },
-  {
-    name: 'Petrol stations',
-    englishName: 'Fuel Stations',
-    bgImage: gasStationImage,
-    overlay: 'from-red-600/80 to-orange-500/80',
-  },
-  {
-    name: 'Hotels, Restaurants',
-    englishName: 'Hospitality Industry',
-    bgImage: hotelImage,
-    overlay: 'from-purple-600/80 to-pink-500/80',
-  },
-  {
-    name: 'Airports',
-    englishName: 'Aviation Facilities',
-    bgImage: airportImage,
-    overlay: 'from-indigo-600/80 to-blue-500/80',
-  },
-  {
-    name: 'Farm',
-    englishName: 'Farming',
-    bgImage: farmImage,
-    overlay: 'from-green-600/80 to-teal-500/80',
-  },
-  {
-    name: 'Power stations',
-    englishName: 'Energy Plants',
-    bgImage: energyStationImage,
-    overlay: 'from-yellow-600/80 to-orange-500/80',
-  },
-  {
-    name: 'Schools',
-    englishName: 'Educational Institutions',
-    bgImage: schoolImage,
-    overlay: 'from-blue-600/80 to-indigo-500/80',
-  },
-  {
-    name: 'Charging electric cars at home',
-    englishName: 'Home EV Charging',
-    bgImage: chargingImage,
-    overlay: 'from-green-700/80 to-emerald-500/80',
-  },
-]
-
 export function SecondaryFeatures() {
+  const { t } = useLanguage()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [isAnimating, setIsAnimating] = useState(true)
+
+  // Get industries from translations
+  const industries = [
+    {
+      name: t('secondaryFeatures.industries.0.name'),
+      englishName: t('secondaryFeatures.industries.0.englishName'),
+      bgImage: bankImage,
+      overlay: 'from-blue-900/80 to-gray-900/80',
+    },
+    {
+      name: t('secondaryFeatures.industries.1.name'),
+      englishName: t('secondaryFeatures.industries.1.englishName'),
+      bgImage: residentialImage,
+      overlay: 'from-gray-800/80 to-blue-800/80',
+    },
+    {
+      name: t('secondaryFeatures.industries.2.name'),
+      englishName: t('secondaryFeatures.industries.2.englishName'),
+      bgImage: buildingImage,
+      overlay: 'from-orange-600/80 to-yellow-500/80',
+    },
+    {
+      name: t('secondaryFeatures.industries.3.name'),
+      englishName: t('secondaryFeatures.industries.3.englishName'),
+      bgImage: gasStationImage,
+      overlay: 'from-red-600/80 to-orange-500/80',
+    },
+    {
+      name: t('secondaryFeatures.industries.4.name'),
+      englishName: t('secondaryFeatures.industries.4.englishName'),
+      bgImage: hotelImage,
+      overlay: 'from-purple-600/80 to-pink-500/80',
+    },
+    {
+      name: t('secondaryFeatures.industries.5.name'),
+      englishName: t('secondaryFeatures.industries.5.englishName'),
+      bgImage: airportImage,
+      overlay: 'from-indigo-600/80 to-blue-500/80',
+    },
+    {
+      name: t('secondaryFeatures.industries.6.name'),
+      englishName: t('secondaryFeatures.industries.6.englishName'),
+      bgImage: farmImage,
+      overlay: 'from-green-600/80 to-teal-500/80',
+    },
+    {
+      name: t('secondaryFeatures.industries.7.name'),
+      englishName: t('secondaryFeatures.industries.7.englishName'),
+      bgImage: energyStationImage,
+      overlay: 'from-yellow-600/80 to-orange-500/80',
+    },
+    {
+      name: t('secondaryFeatures.industries.8.name'),
+      englishName: t('secondaryFeatures.industries.8.englishName'),
+      bgImage: schoolImage,
+      overlay: 'from-blue-600/80 to-indigo-500/80',
+    },
+    {
+      name: t('secondaryFeatures.industries.9.name'),
+      englishName: t('secondaryFeatures.industries.9.englishName'),
+      bgImage: chargingImage,
+      overlay: 'from-green-700/80 to-emerald-500/80',
+    },
+  ]
 
   // Responsive items per page (mobile/tablet/desktop)
   const getItemsPerPage = () => {
@@ -149,10 +152,22 @@ export function SecondaryFeatures() {
       }
     }, 3000)
     return () => clearInterval(intervalId)
-  }, [isPaused])
+  }, [isPaused, industries.length])
 
   return (
-    <section aria-label="Industry applications" className="relative bg-white">
+    <section aria-label={t('secondaryFeatures.title')} className="relative bg-white">
+      {/* Section Header */}
+      <Container className="py-16 sm:py-20 lg:py-32">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-2xl font-medium tracking-tight sm:text-3xl lg:text-4xl">
+            {t('secondaryFeatures.title')}
+          </h2>
+          <p className="mt-4 text-base text-gray-600 sm:text-lg lg:text-xl">
+            {t('secondaryFeatures.subtitle')}
+          </p>
+        </div>
+      </Container>
+
       {/* Slider */}
       <div
         className="relative h-[500px] overflow-hidden"

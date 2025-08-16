@@ -1,0 +1,226 @@
+{
+  "nav": {
+    "home": "Trang chủ",
+    "safety": "An toàn",
+    "features": "Tính năng",
+    "certificates": "Chứng nhận",
+    "faqs": "Câu hỏi",
+    "contact": "Liên hệ",
+    "languages": "Ngôn ngữ"
+  },
+  "secondaryFeatures": {
+    "title": "Ứng dụng trong các ngành",
+    "subtitle": "Được tin dùng trong nhiều lĩnh vực khác nhau",
+    "industries": [
+      {
+        "name": "Ngân hàng",
+        "englishName": "Tổ chức tài chính"
+      },
+      {
+        "name": "Khu dân cư", 
+        "englishName": "Cộng đồng nhà ở"
+      },
+      {
+        "name": "Văn phòng – Tòa nhà cao tầng",
+        "englishName": "Tòa nhà thương mại"
+      },
+      {
+        "name": "Trạm xăng",
+        "englishName": "Trạm nhiên liệu"
+      },
+      {
+        "name": "Khách sạn, Nhà hàng",
+        "englishName": "Ngành dịch vụ"
+      },
+      {
+        "name": "Sân bay",
+        "englishName": "Cơ sở hàng không"
+      },
+      {
+        "name": "Trang trại",
+        "englishName": "Nông nghiệp"
+      },
+      {
+        "name": "Nhà máy điện",
+        "englishName": "Cơ sở năng lượng"
+      },
+      {
+        "name": "Trường học",
+        "englishName": "Cơ sở giáo dục"
+      },
+      {
+        "name": "Sạc xe điện tại nhà",
+        "englishName": "Sạc xe điện gia đình"
+      }
+    ]
+  },
+  "hero": {
+    "title": "THIẾT BỊ CẦU DAO THÔNG MINH",
+    "subtitle": "Bảo vệ an toàn điện tiên tiến cho nhà và doanh nghiệp",
+    "description": "Đây là dòng sản phẩm thông minh được phát triển và phân phối bởi CNC ELECTRIC. Sản phẩm này được sử dụng trong hộ gia đình, chung cư, biệt thự, khách sạn, nhà hàng, trường học và nhà máy... Sản phẩm được thiết kế thân thiện với người dùng, dễ dàng lắp đặt vào hệ thống điện hiện có.",
+    "getStarted": "Bắt đầu",
+    "learnMore": "Tìm hiểu thêm"
+  },
+  "features": {
+    "title": "Các tính năng nổi bật của cầu dao thông minh.",
+    "subtitle": "Bảo vệ điện toàn diện",
+    "description": "Cầu dao thông minh được thiết kế để cung cấp bảo vệ và kiểm soát toàn diện các hệ thống điện, đảm bảo an toàn và hiệu quả trong nhiều ứng dụng khác nhau."
+  },
+  "primaryFeatures": {
+    "function": {
+      "name": "Chức năng",
+      "description": [
+        "Thông báo - bảo vệ quá áp, thiếu áp",
+        "Phát hiện chính xác chỉ số dòng rò",
+        "Hẹn giờ bật/tắt từ xa",
+        "Cảnh báo sớm quá nhiệt, phòng cháy nổ",
+        "Quản lý chính xác chỉ số điện",
+        "Cắt thông minh đoản mạch",
+        "Khóa an toàn khi kiểm tra và sửa chữa điện"
+      ]
+    },
+    "preventive": {
+      "name": "Chức năng phòng ngừa",
+      "description": [
+        "Quá áp.",
+        "Thiếu áp.",
+        "Quá tải.",
+        "Mất pha, lỗi pha.",
+        "Quá nhiệt.",
+        "Đoản mạch.",
+        "Rò điện.",
+        "Điện giật.",
+        "Cháy.",
+        "Nổ."
+      ]
+    },
+    "control": {
+      "name": "Chức năng điều khiển",
+      "description": [
+        "Điều khiển trực tiếp",
+        "Điều khiển nhóm",
+        "Điều khiển từ xa",
+        "Điều khiển tham số",
+        "Điều khiển hẹn giờ",
+        "Điều khiển tự động"
+      ]
+    },
+    "alarm": {
+      "name": "Chức năng báo động",
+      "description": [
+        "Báo động đầu cuối",
+        "Báo động nền tảng đám mây",
+        "Báo động SMS đến điện thoại"
+      ]
+    }
+  },
+  "advancedFeatures": {
+    "title": "Vì một cuộc sống an toàn",
+    "subtitle": "Tính năng an toàn hiện đại",
+    "description": "Bộ sản phẩm an toàn điện của CNC ELECTRIC cho phép loại bỏ hầu hết các nguy cơ về điện như: Giật điện, quá áp, thấp áp, quá tải, quá nhiệt, ngăn mạch, sét lan truyền, rò rỉ điện thiết bị điện ngâm nước, cháy do điện... Nâng cao mức độ bảo vệ an toàn lên mức cao nhất, và là một trong những dòng sản phẩm tiên phong với công nghệ hàng đầu trong lĩnh vực an toàn điện.",
+    "itemTitle": "Gạt bỏ hoàn toàn các nỗi lo",
+    "features": [
+      {
+        "name": "Giật điện, Đoản mạch",
+        "description": "Bảo vệ toàn diện khỏi các nguy cơ giật điện và đoản mạch với công nghệ phát hiện thông minh."
+      },
+      {
+        "name": "Cháy nổ do điện",
+        "description": "Ngăn chặn hiệu quả các nguy cơ cháy nổ do điện với hệ thống cảnh báo sớm và tự động ngắt nguồn."
+      },
+      {
+        "name": "Hỏng thiết bị điện do ngâm nước",
+        "description": "Bảo vệ thiết bị điện khỏi hư hỏng do tiếp xúc với nước với công nghệ cảm biến độ ẩm tiên tiến."
+      },
+      {
+        "name": "Tai nạn điện",
+        "description": "Giảm thiểu các tai nạn điện với hệ thống an toàn đa lớp và cảnh báo thông minh."
+      }
+    ]
+  },
+  "pricing": {
+    "title": "Giá Đơn Giản",
+    "subtitle": "Chọn gói phù hợp với nhu cầu"
+  },
+  "testimonials": {
+    "title": "Khách Hàng Nói Gì"
+  },
+  "faqs": {
+    "title": "Câu Hỏi Thường Gặp",
+    "subtitle": "Nếu bạn có câu hỏi khác, hãy liên hệ với chúng tôi.",
+    "questions": [
+      {
+        "question": "Ai nên lắp đặt thiết bị và có hướng dẫn đấu dây cụ thể không?",
+        "answer": "Việc lắp đặt và vận hành sản phẩm phải được thực hiện bởi thợ điện chuyên nghiệp. Dây pha không được đấu ngược, dây đất phải được đấu đúng để tránh cháy thiết bị. Dây tại các đầu cực đầu vào-đầu ra phải được nối chặt bằng vít."
+      },
+      {
+        "question": "Điều gì xảy ra nếu thiết bị được đấu dây sai?",
+        "answer": "Đấu dây sai sẽ làm cháy thiết bị và không được bảo hành. Nếu người dùng đấu dây sai dẫn đến điện giật, thiết bị không nằm trong phạm vi bảo hành. Nếu vít không được siết chặt, có thể gây ra đoản mạch và tạo nhiệt do tiếp xúc kém."
+      },
+      {
+        "question": "Có những hạn chế về môi trường nào khi lắp đặt?",
+        "answer": "Thiết bị không thể sử dụng trong nước biển hoặc chất lỏng có các chất hữu cơ hòa tan khác. Nó không chống nước nên không thể lắp đặt ngoài trời hoặc nơi dễ bị ngập lụt."
+      },
+      {
+        "question": "Những hạn chế bảo vệ của thiết bị này là gì?",
+        "answer": "Thiết bị chỉ bảo vệ đầu ra; đầu vào không nằm trong phạm vi bảo vệ. Nó cũng chỉ bảo vệ chính đường dây điện, không bảo vệ thiết bị điện cuối cùng được kết nối với nó."
+      },
+      {
+        "question": "Có cần thiết phải nối đất để thiết bị hoạt động hiệu quả không?",
+        "answer": "Thiết bị hoạt động tốt nhất khi được nối đất."
+      },
+      {
+        "question": "Làm thế nào để kết nối thiết bị với máy tính?",
+        "answer": "RS485 của sản phẩm là cổng truyền thông tiêu chuẩn có thể kết nối với máy tính qua bộ chuyển đổi RS485 sang USB để trao đổi thông tin và điều khiển. Tốc độ baud mặc định là 9600bps, bạn có thể xem và thiết lập trên máy tính."
+      },
+      {
+        "question": "Những cảnh báo an toàn chính cho người dùng là gì?",
+        "answer": "Không được cầm dây điện bằng một tay và chạm kim loại có nối đất bằng tay kia. Cũng không được chạm đồng thời vào dây pha và dây trung tính, vì điều này sẽ tạo ra điện giật mạnh, mặc dù có thể tự giải phóng. Hãy nhớ, thiết bị này là biện pháp phòng ngừa và không cho phép vận hành điện trái quy định."
+      },
+      {
+        "question": "Thiết bị có bảo vệ chống sét không?",
+        "answer": "Thiết bị không có khả năng chống sét tự nhiên. Tuy nhiên, nó có thể cắt các xung sét dẫn và sẽ chuyển hướng dòng điện xuống dây đất."
+      },
+      {
+        "question": "Bảo vệ ngâm nước hoạt động như thế nào?",
+        "answer": "Bảo vệ ngâm nước chỉ hiệu quả nếu nước được cách ly với đất hoặc PE. Nếu một người chạm vào dây pha khi có nối đất, dòng rò có thể gây cảm giác giật, nhưng người đó có thể tự giải phóng khỏi nguồn."
+      },
+      {
+        "question": "Thiết bị này có giúp ngăn chặn cháy nổ không?",
+        "answer": "Có, thiết bị giảm thiểu nguy cơ cháy nổ do điện."
+      },
+      {
+        "question": "Thiết bị tiết kiệm năng lượng như thế nào?",
+        "answer": "Thiết bị tiết kiệm năng lượng bằng cách cảnh báo và cắt điện khi phát hiện sự cố rò rỉ điện."
+      },
+      {
+        "question": "Sản phẩm có thể được tùy chỉnh không?",
+        "answer": "Có, sản phẩm này có thể được tùy chỉnh theo nhu cầu của người dùng. Vui lòng liên hệ với nhân viên bộ phận kỹ thuật liên quan để được hỗ trợ."
+      }
+    ]
+  },
+  "footer": {
+    "company": "Công ty",
+    "support": "Hỗ trợ",
+    "legal": "Pháp lý",
+    "social": "Theo dõi"
+  },
+  "contact": {
+    "title": "Liên Hệ",
+    "subtitle": "Chúng tôi rất mong được nghe từ bạn",
+    "name": "Họ và Tên",
+    "email": "Địa chỉ Email",
+    "phone": "Số Điện Thoại",
+    "company": "Công ty",
+    "subject": "Chủ đề",
+    "message": "Tin nhắn",
+    "send": "Gửi Tin Nhắn",
+    "sending": "Đang gửi...",
+    "success": "Cảm ơn tin nhắn của bạn. Chúng tôi sẽ phản hồi sớm!",
+    "error": "Xin lỗi, có lỗi khi gửi tin nhắn. Vui lòng thử lại."
+  },
+  "lang": {
+    "english": "English",
+    "vietnamese": "Tiếng Việt"
+  }
+}

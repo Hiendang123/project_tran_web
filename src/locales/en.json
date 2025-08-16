@@ -1,0 +1,226 @@
+{
+  "nav": {
+    "home": "Home",
+    "safety": "Safety",
+    "features": "Features",
+    "certificates": "Certificates",
+    "faqs": "FAQs",
+    "contact": "Contact",
+    "languages": "Languages"
+  },
+  "hero": {
+    "title": "SMART BREAKER EQUIPMENT",
+    "subtitle": "Advanced electrical safety protection for your home and business",
+    "description": "This is a line of smart products developed and distributed by CNC ELECTRIC. This product is used in households, apartments, villas, hotels, restaurants, schools, and factories... The product is designed to be user-friendly, easy to install in existing electrical systems.",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More"
+  },
+  "features": {
+    "title": "Outstanding features of smart circuit breaker.",
+    "subtitle": "Comprehensive electrical protection",
+    "description": "Smart circuit breakers are designed to provide comprehensive protection and control over electrical systems, ensuring safety and efficiency in various applications."
+  },
+  "primaryFeatures": {
+    "function": {
+      "name": "Function",
+      "description": [
+        "Notification - overvoltage, low voltage protection",
+        "Accurate detection of leakage current index",
+        "Remote on/off timer",
+        "Early warning of overheating, fire and explosion prevention",
+        "Accurate management of electrical index",
+        "Smart short circuit cutting",
+        "Safety lock when checking and repairing electricity"
+      ]
+    },
+    "preventive": {
+      "name": "Preventive functions",
+      "description": [
+        "Overvoltage.",
+        "Low voltage.",
+        "Overload.",
+        "Phase loss, phase fault.",
+        "Overheating.",
+        "Short circuit.",
+        "Leakage.",
+        "Electric shock.",
+        "Fire.",
+        "Explosion."
+      ]
+    },
+    "control": {
+      "name": "Control Functions",
+      "description": [
+        "Direct Control",
+        "Group Control",
+        "Remote Control",
+        "Parameter Control",
+        "Timer Control",
+        "Auto Control"
+      ]
+    },
+    "alarm": {
+      "name": "Alarm Functions",
+      "description": [
+        "Terminal Alarm",
+        "Cloud Platform Alarm",
+        "SMS Alarm to Phone"
+      ]
+    }
+  },
+  "secondaryFeatures": {
+    "title": "Industry Applications",
+    "subtitle": "Trusted across various industries",
+    "industries": [
+      {
+        "name": "Banks",
+        "englishName": "Financial Institutions"
+      },
+      {
+        "name": "Residential areas", 
+        "englishName": "Housing Communities"
+      },
+      {
+        "name": "Offices – High-rise buildings",
+        "englishName": "Commercial Buildings"
+      },
+      {
+        "name": "Petrol stations",
+        "englishName": "Fuel Stations"
+      },
+      {
+        "name": "Hotels, Restaurants",
+        "englishName": "Hospitality Industry"
+      },
+      {
+        "name": "Airports",
+        "englishName": "Aviation Facilities"
+      },
+      {
+        "name": "Farm",
+        "englishName": "Farming"
+      },
+      {
+        "name": "Power stations",
+        "englishName": "Energy Plants"
+      },
+      {
+        "name": "Schools",
+        "englishName": "Educational Institutions"
+      },
+      {
+        "name": "Charging electric cars at home",
+        "englishName": "Home EV Charging"
+      }
+    ]
+  },
+  "advancedFeatures": {
+    "title": "For a Safe Life",
+    "subtitle": "Cutting-edge safety features",
+    "description": "CNC ELECTRIC electrical safety product line eliminates most electrical hazards such as electric shock, overvoltage, undervoltage, overload, overheating, short circuit, lightning surge, electrical leakage from submerged equipment, and fire caused by electricity. It maximizes the level of safety protection and is one of the pioneering product lines with leading technology in the field of electrical safety.",
+    "itemTitle": "Completely Eliminate All Concerns",
+    "features": [
+      {
+        "name": "Electric Shock, Short Circuit",
+        "description": "For every friend you invite to Pocket, you get insider notifications 5 seconds sooner. And it's 10 seconds if you invite an insider."
+      },
+      {
+        "name": "Electrical Fire and Explosion",
+        "description": "Get a push notification every time we find out something that's going to lower the share price on your holdings so you can sell before the information hits the public markets."
+      },
+      {
+        "name": "Damage to Electrical Devices from Water Exposure",
+        "description": "We hide your stock purchases behind thousands of anonymous trading accounts, so suspicious activity can never be traced back to you."
+      },
+      {
+        "name": "Electrical Accidents",
+        "description": "We hide your stock purchases behind thousands of anonymous trading accounts, so suspicious activity can never be traced back to you."
+      }
+    ]
+  },
+  "pricing": {
+    "title": "Simple Pricing",
+    "subtitle": "Choose the right plan for your needs"
+  },
+  "testimonials": {
+    "title": "What Our Customers Say"
+  },
+  "faqs": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "If you can't find what you're looking for, email our support team.",
+    "questions": [
+      {
+        "question": "Who should install the device and are there specific wiring instructions?",
+        "answer": "The installation and operation of the product must be performed by a professional electrician. The phase wire cannot be reversed, and the ground wire must be connected correctly to avoid burning the device. Wires at the input-output terminals must be securely connected with screws."
+      },
+      {
+        "question": "What happens if the device is wired incorrectly?",
+        "answer": "Faulty wiring will burn the device and is not covered by the warranty. If the user wires it incorrectly, leading to an electric shock, the device is not within the warranty scope. If screws are not tightened securely, it can cause a short circuit and generate heat due to poor contact."
+      },
+      {
+        "question": "Are there any environmental restrictions for installation?",
+        "answer": "The device cannot be used in seawater or liquids with other dissolved organic substances. It is not waterproof, so it cannot be installed outdoors or in places prone to flooding."
+      },
+      {
+        "question": "What are the protection limitations of this device?",
+        "answer": "The device only protects the output; the input is not within the scope of protection. It also only protects the power line itself, not the final electrical equipment connected to it."
+      },
+      {
+        "question": "Is grounding required for the device to work effectively?",
+        "answer": "The device works best when it is grounded."
+      },
+      {
+        "question": "How can I connect the device to a computer?",
+        "answer": "The product's RS485 is a standard communication port that can be connected to a computer via an RS485 to USB converter for information exchange and control. The default baud rate is 9600bps, which you can view and set on the computer."
+      },
+      {
+        "question": "What are the main safety warnings for users?",
+        "answer": "Do not hold a power wire with one hand and touch a grounded metal with the other. Also, do not touch the phase and neutral wires at the same time, as this will create a strong electric shock, though self-release is possible. Remember, this device is a preventive measure and does not permit operating electricity against regulations."
+      },
+      {
+        "question": "Does the device protect against lightning?",
+        "answer": "The device does not have inherent lightning protection. However, it can cut off conducted lightning surges and will redirect the current down the ground wire."
+      },
+      {
+        "question": "How does the water immersion protection work?",
+        "answer": "Water immersion protection is only effective if the water is isolated from the ground or PE. If a person touches a phase wire while grounded, a leakage current may cause a shock sensation, but the person can self-release from the source."
+      },
+      {
+        "question": "Does this device help prevent fires?",
+        "answer": "Yes, the device minimizes the risk of electrical fires and explosions."
+      },
+      {
+        "question": "How does the device save energy?",
+        "answer": "The device saves energy by alerting and cutting off power when it detects an electrical leakage incident."
+      },
+      {
+        "question": "Can the product be customized?",
+        "answer": "Yes, this product can be customized according to user needs. Please contact the relevant technical department staff for assistance."
+      }
+    ]
+  },
+  "footer": {
+    "company": "Company",
+    "support": "Support",
+    "legal": "Legal",
+    "social": "Follow Us"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "We would love to hear from you",
+    "name": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "company": "Company",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Thank you for your message. We will get back to you soon!",
+    "error": "Sorry, there was an error sending your message. Please try again."
+  },
+  "lang": {
+    "english": "English",
+    "vietnamese": "Tiếng Việt"
+  }
+}

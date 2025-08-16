@@ -8,6 +8,8 @@ import { Container } from '@/components/Container'
 import { TextField } from '@/components/Fields'
 import { Logomark } from '@/components/Logo'
 import { NavLinks } from '@/components/NavLinks'
+import { navigationItems } from '@/lib/navigation'
+import { useLanguage } from '@/contexts/LanguageContext'
 import qrCode from '@/images/qr-code.svg'
 
 function QrCodeBorder(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -68,6 +70,8 @@ function EmailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 }
 
 function FooterNavLinks() {
+  const { t } = useLanguage()
+
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
@@ -109,24 +113,16 @@ function FooterNavLinks() {
     }
   }
 
-  const navItems = [
-    ['Home', '/'],
-    ['Safety', '/#safety'],
-    ['Features', '/#features'],
-    ['Certificates', '/#certificates'],
-    ['FAQs', '/#faqs'],
-  ]
-
   return (
-    <nav className="flex flex-row space-x-4">
-      {navItems.map(([label, href]) => (
+    <nav className="flex flex-row justify-center space-x-4 md:justify-start">
+      {navigationItems.map(([label, href]) => (
         <Link
           key={label}
           href={href}
           onClick={(e) => handleSmoothScroll(e, href)}
           className="font-bold text-gray-600 transition-colors"
         >
-          {label}
+          {t(label)}
         </Link>
       ))}
     </nav>
@@ -147,11 +143,9 @@ export function Footer() {
     <footer className="border-t border-gray-200">
       <Container>
         <div className="flex flex-col items-start justify-between gap-y-12 pt-16 pb-6 lg:flex-row lg:items-start lg:py-16">
-          <div className="lex-col flex items-center lg:flex-row lg:gap-16 xl:gap-24">
+          <div className="flex w-full flex-col items-center md:flex-row md:justify-center lg:gap-16 xl:gap-24">
             {/* Logo and Contact Info */}
-            <div className="flex items-center text-gray-900">
-              <Logomark className="w-[300px] flex-none fill-cyan-500" />
-            </div>
+            <Logomark className="w-[300px]" />
 
             {/* Navigation Links */}
             <div className="mt-8 lg:mt-0">
@@ -159,25 +153,25 @@ export function Footer() {
 
               <nav className="mt-6 space-y-3">
                 <div className="flex items-start gap-3">
-                  <AddressIcon className="mt-0.5 h-5 w-5 flex-shrink-0 text-cyan-500" />
+                  <AddressIcon className="mt-0.5 h-5 w-5 flex-shrink-0" />
                   <p className="text-sm leading-relaxed text-gray-600">
                     {footerText.address}
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <PhoneIcon className="h-5 w-5 flex-shrink-0 text-cyan-500" />
+                  <PhoneIcon className="h-5 w-5 flex-shrink-0" />
                   <a
                     href={`tel:${footerText.phone}`}
-                    className="text-sm text-gray-600 transition-colors hover:text-cyan-600"
+                    className="text-sm text-gray-600 transition-colors"
                   >
                     {footerText.phone}
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
-                  <EmailIcon className="h-5 w-5 flex-shrink-0 text-cyan-500" />
+                  <EmailIcon className="h-5 w-5 flex-shrink-0" />
                   <a
                     href={`mailto:${footerText.email}`}
-                    className="text-sm text-gray-600 transition-colors hover:text-cyan-600"
+                    className="text-sm text-gray-600 transition-colors"
                   >
                     {footerText.email}
                   </a>
@@ -203,7 +197,7 @@ export function Footer() {
             </div>
           </div> */}
         </div>
-        <div className="flex items-center border-t border-gray-200 pt-8 pb-12 md:justify-between md:pt-6">
+        <div className="flex items-center justify-center border-t border-gray-200 pt-8 pb-12 md:pt-6">
           {/* <form className="flex w-full justify-center md:w-auto">
             <TextField
               type="email"
@@ -218,7 +212,7 @@ export function Footer() {
               <span className="lg:hidden">Join newsletter</span>
             </Button>
           </form> */}
-          <p className="mt-6 text-sm text-gray-500 md:mt-0">
+          <p className="mt-6 text-center text-sm text-gray-500 md:mt-0">
             &copy; Copyright {new Date().getFullYear()}. All rights reserved.
           </p>
         </div>

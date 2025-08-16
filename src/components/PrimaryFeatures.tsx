@@ -16,6 +16,7 @@ import { AppScreen } from '@/components/AppScreen'
 import { CircleBackground } from '@/components/CircleBackground'
 import { Container } from '@/components/Container'
 import { PhoneFrame } from '@/components/PhoneFrame'
+import { useLanguage } from '@/contexts/LanguageContext'
 import AtomaatOut from '@/images/atomaat-out.png'
 import {
   DiageoLogo,
@@ -36,70 +37,6 @@ const MotionAppScreenBody = motion(AppScreen.Body)
 interface CustomAnimationProps {
   isForwards: boolean
   changeCount: number
-}
-
-const features = [
-  {
-    name: 'Function',
-    description: [
-      'Notification - overvoltage, low voltage protection',
-      'Accurate detection of leakage current index',
-      'Remote on/off timer',
-      'Early warning of overheating, fire and explosion prevention',
-      'Accurate management of electrical index',
-      'Smart short circuit cutting',
-      'Safety lock when checking and repairing electricity',
-    ],
-    icon: DeviceUserIcon,
-    screen: InviteScreen,
-  },
-  {
-    name: 'Preventive functions',
-    description: [
-      'Overvoltage.',
-      'Low voltage.',
-      'Overload.',
-      'Phase loss, phase fault.',
-      'Overheating.',
-      'Short circuit.',
-      'Leakage.',
-      'Electric shock.',
-      'Fire.',
-      'Explosion.',
-    ],
-    icon: DeviceNotificationIcon,
-    screen: StocksScreen,
-  },
-  {
-    name: 'Control Functions',
-    description: [
-      'Direct Control',
-      'Group Control',
-      'Remote Control',
-      'Parameter Control',
-      'Timer Control',
-      'Auto Control',
-    ],
-    icon: DeviceTouchIcon,
-    screen: InvestScreen,
-  },
-  {
-    name: 'Alarm Functions',
-    description: [
-      'Terminal Alarm',
-      'Cloud Platform Alarm',
-      'SMS Alarm to Phone',
-    ],
-    icon: DeviceTouchIcon,
-    screen: InvestScreen,
-  },
-]
-
-const featuredContent = {
-  title: 'Outstanding features of smart circuit breaker.',
-  description:
-    'Smart circuit breakers are designed to provide comprehensive protection and control over electrical systems, ensuring safety and efficiency in various applications.',
-  items: features,
 }
 
 function DeviceUserIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -436,7 +373,7 @@ function usePrevious<T>(value: T) {
   return ref.current
 }
 
-function FeaturesDesktop() {
+function FeaturesDesktop({ featuredContent }: { featuredContent: any }) {
   let [changeCount, setChangeCount] = useState(0)
   let [selectedIndex, setSelectedIndex] = useState(0)
   let prevIndex = usePrevious(selectedIndex)
@@ -459,7 +396,7 @@ function FeaturesDesktop() {
     }, 3000)
 
     return () => clearTimeout(timer)
-  }, [selectedIndex, onChange])
+  }, [selectedIndex, onChange, featuredContent.items.length])
 
   return (
     <TabGroup
@@ -469,7 +406,7 @@ function FeaturesDesktop() {
       vertical
     >
       <TabList className="relative z-10 order-last space-y-4 lg:order-last lg:col-span-6 lg:space-y-6">
-        {featuredContent.items.map((feature, featureIndex) => (
+        {featuredContent.items.map((feature: any, featureIndex: number) => (
           <div
             key={feature.name}
             className="relative rounded-2xl bg-white transition-colors"
@@ -499,7 +436,7 @@ function FeaturesDesktop() {
                     >
                       {feature.description
                         .slice(0, Math.ceil(feature.description.length / 2))
-                        .map((item) => (
+                        .map((item: string) => (
                           <li key={item}>{item}</li>
                         ))}
                     </ul>
@@ -508,7 +445,7 @@ function FeaturesDesktop() {
                     >
                       {feature.description
                         .slice(Math.ceil(feature.description.length / 2))
-                        .map((item) => (
+                        .map((item: string) => (
                           <li key={item}>{item}</li>
                         ))}
                     </ul>
@@ -517,7 +454,7 @@ function FeaturesDesktop() {
                   <ul
                     className={`mt-2 list-inside list-disc text-sm ${featureIndex === selectedIndex ? 'text-white' : 'text-gray-400'}`}
                   >
-                    {feature.description.map((item) => (
+                    {feature.description.map((item: string) => (
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
@@ -545,7 +482,7 @@ function FeaturesDesktop() {
   )
 }
 
-function FeaturesMobile() {
+function FeaturesMobile({ features }: { features: any[] }) {
   let [activeIndex, setActiveIndex] = useState(0)
   let slideContainerRef = useRef<React.ElementRef<'div'>>(null)
   let slideRefs = useRef<Array<React.ElementRef<'div'>>>([])
@@ -637,6 +574,72 @@ function FeaturesMobile() {
 }
 
 export function PrimaryFeatures() {
+  const { t } = useLanguage()
+
+  // Create features array from translations
+  const features = [
+    {
+      name: t('primaryFeatures.function.name'),
+      description: [
+        t('primaryFeatures.function.description.0'),
+        t('primaryFeatures.function.description.1'),
+        t('primaryFeatures.function.description.2'),
+        t('primaryFeatures.function.description.3'),
+        t('primaryFeatures.function.description.4'),
+        t('primaryFeatures.function.description.5'),
+        t('primaryFeatures.function.description.6'),
+      ],
+      icon: DeviceUserIcon,
+      screen: InviteScreen,
+    },
+    {
+      name: t('primaryFeatures.preventive.name'),
+      description: [
+        t('primaryFeatures.preventive.description.0'),
+        t('primaryFeatures.preventive.description.1'),
+        t('primaryFeatures.preventive.description.2'),
+        t('primaryFeatures.preventive.description.3'),
+        t('primaryFeatures.preventive.description.4'),
+        t('primaryFeatures.preventive.description.5'),
+        t('primaryFeatures.preventive.description.6'),
+        t('primaryFeatures.preventive.description.7'),
+        t('primaryFeatures.preventive.description.8'),
+        t('primaryFeatures.preventive.description.9'),
+      ],
+      icon: DeviceNotificationIcon,
+      screen: StocksScreen,
+    },
+    {
+      name: t('primaryFeatures.control.name'),
+      description: [
+        t('primaryFeatures.control.description.0'),
+        t('primaryFeatures.control.description.1'),
+        t('primaryFeatures.control.description.2'),
+        t('primaryFeatures.control.description.3'),
+        t('primaryFeatures.control.description.4'),
+        t('primaryFeatures.control.description.5'),
+      ],
+      icon: DeviceTouchIcon,
+      screen: InvestScreen,
+    },
+    {
+      name: t('primaryFeatures.alarm.name'),
+      description: [
+        t('primaryFeatures.alarm.description.0'),
+        t('primaryFeatures.alarm.description.1'),
+        t('primaryFeatures.alarm.description.2'),
+      ],
+      icon: DeviceTouchIcon,
+      screen: InvestScreen,
+    },
+  ]
+
+  const featuredContent = {
+    title: t('features.title'),
+    description: t('features.description'),
+    items: features,
+  }
+
   return (
     <section
       id="features"
@@ -654,7 +657,8 @@ export function PrimaryFeatures() {
         </div>
       </Container>
       <Container className="mt-12 sm:mt-16 lg:mt-20">
-        <FeaturesDesktop />
+        <FeaturesDesktop featuredContent={featuredContent} />
+        {/* <FeaturesMobile features={features} /> */}
       </Container>
     </section>
   )

@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useRef } from 'react'
 import {
   Popover,
   PopoverButton,
@@ -17,6 +18,10 @@ import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { Logo, Logomark } from '@/components/Logo'
 import { NavLinks } from '@/components/NavLinks'
+import { navigationItems } from '@/lib/navigation'
+import { useLanguage, type Language } from '@/contexts/LanguageContext'
+import flagEn from '@/images/flags/flag-en.svg'
+import flagVi from '@/images/flags/flag-vi.svg'
 
 function MenuIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -76,6 +81,8 @@ function MobileNavLink(
     'as' | 'className'
   > & { href: string },
 ) {
+  const { t } = useLanguage()
+
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
@@ -135,6 +142,39 @@ function MobileNavLink(
 }
 
 export function Header() {
+  const { t, language, setLanguage } = useLanguage()
+
+  // Close mobile menu on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      // Find the popover button by checking for data-headlessui-state="open"
+      const popoverButton = document.querySelector(
+        '[data-headlessui-state="open"][aria-label="Toggle site navigation"]',
+      )
+
+      if (popoverButton) {
+        // Click the button to close the menu
+        ;(popoverButton as HTMLElement).click()
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const languageOptions = [
+    {
+      code: 'en' as Language,
+      label: t('lang.english'),
+      flag: flagEn,
+    },
+    {
+      code: 'vi' as Language,
+      label: t('lang.vietnamese'),
+      flag: flagVi,
+    },
+  ]
+
   return (
     <header>
       <nav>
@@ -188,53 +228,64 @@ export function Header() {
                           className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-gray-50 px-6 pt-32 pb-6 shadow-2xl shadow-gray-900/20"
                         >
                           <div className="space-y-4">
-                            <MobileNavLink href="/">Home</MobileNavLink>
-                            <MobileNavLink href="/#safety">
-                              Safety
-                            </MobileNavLink>
-                            <MobileNavLink href="/#features">
-                              Features
-                            </MobileNavLink>
-                            <MobileNavLink href="/#certificates">
-                              Certificates
-                            </MobileNavLink>
-                            <MobileNavLink href="/#faqs">FAQs</MobileNavLink>
+                            {navigationItems.map(([label, href]) => (
+                              <MobileNavLink key={label} href={href}>
+                                {t(label)}
+                              </MobileNavLink>
+                            ))}
                           </div>
                           <div className="mt-8 flex flex-col gap-4">
-                            <Button href="/contact" variant="outline">
-                              Contact
-                            </Button>
+                            <MobileNavLink href="/#contact">
+                              <Button
+                                variant="outline"
+                                className="w-full border-[#ba1c20] text-[#ba1c20] hover:bg-[#ba1c20] hover:text-white"
+                              >
+                                {t('nav.contact')}
+                              </Button>
+                            </MobileNavLink>
                             <Menu>
-                              <MenuButton className="flex w-full items-center justify-center gap-2">
-                                <GlobeIcon className="h-4 w-4" />
-                                Languages
+                              <MenuButton className="flex w-full items-center justify-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold hover:bg-gray-50">
+                                {(() => {
+                                  const currentLang = languageOptions.find(
+                                    (opt) => opt.code === language,
+                                  )
+                                  return currentLang ? (
+                                    <Image
+                                      src={currentLang.flag}
+                                      alt={`${currentLang.label} flag`}
+                                      width={20}
+                                      height={15}
+                                      className="rounded-sm"
+                                    />
+                                  ) : (
+                                    <GlobeIcon className="h-4 w-4" />
+                                  )
+                                })()}
+                                {t('nav.languages')}
                                 <ChevronDownIcon className="h-4 w-4" />
                               </MenuButton>
-                              <MenuItems className="ring-opacity-5 absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black focus:outline-none">
-                                <MenuItem>
-                                  <a
-                                    href="#"
-                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                  >
-                                    English
-                                  </a>
-                                </MenuItem>
-                                <MenuItem>
-                                  <a
-                                    href="#"
-                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                  >
-                                    Tiếng Việt
-                                  </a>
-                                </MenuItem>
-                                <MenuItem>
-                                  <a
-                                    href="#"
-                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                  >
-                                    中文
-                                  </a>
-                                </MenuItem>
+                              <MenuItems className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg focus:outline-none">
+                                {languageOptions.map((option) => (
+                                  <MenuItem key={option.code}>
+                                    <button
+                                      onClick={() => setLanguage(option.code)}
+                                      className={`flex w-full items-center gap-3 px-4 py-2 text-left text-sm hover:bg-gray-100 ${
+                                        language === option.code
+                                          ? 'bg-gray-100 font-semibold'
+                                          : 'text-gray-700'
+                                      }`}
+                                    >
+                                      <Image
+                                        src={option.flag}
+                                        alt={`${option.label} flag`}
+                                        width={16}
+                                        height={12}
+                                        className="rounded-sm"
+                                      />
+                                      {option.label}
+                                    </button>
+                                  </MenuItem>
+                                ))}
                               </MenuItems>
                             </Menu>
                           </div>
@@ -246,46 +297,73 @@ export function Header() {
               )}
             </Popover>
             <div className="flex items-center gap-6 max-lg:hidden">
-              <Button
-                className="border-1 border-[#ba1c20] text-[#ba1c20]"
-                href="/contact"
-                variant="outline"
+              <Link
+                href="/#contact"
+                className="rounded-xl border border-[#ba1c20] px-4 py-3 font-bold text-[#ba1c20] transition-colors hover:bg-[#ba1c20] hover:text-white"
+                onClick={(e) => {
+                  e.preventDefault()
+                  const element = document.getElementById('contact')
+                  if (element) {
+                    const header = document.querySelector('header')
+                    const headerHeight =
+                      header?.getBoundingClientRect().height || 0
+                    const elementRect = element.getBoundingClientRect()
+                    const elementTop = elementRect.top + window.pageYOffset
+                    const scrollPosition = elementTop - headerHeight
+                    window.scrollTo({
+                      top: scrollPosition,
+                      behavior: 'smooth',
+                    })
+                  }
+                }}
               >
-                Contact
-              </Button>
-              {/* <Menu as="div" className="relative">
-                <MenuButton className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold">
-                  <GlobeIcon className="h-4 w-4" />
-                  Languages
+                {t('nav.contact')}
+              </Link>
+              <Menu as="div" className="relative">
+                <MenuButton className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold hover:bg-gray-100">
+                  {(() => {
+                    const currentLang = languageOptions.find(
+                      (opt) => opt.code === language,
+                    )
+                    return currentLang ? (
+                      <Image
+                        src={currentLang.flag}
+                        alt={`${currentLang.label} flag`}
+                        width={20}
+                        height={15}
+                        className="rounded-sm"
+                      />
+                    ) : (
+                      <GlobeIcon className="h-4 w-4" />
+                    )
+                  })()}
+                  {t('nav.languages')}
                   <ChevronDownIcon className="h-4 w-4" />
                 </MenuButton>
-                <MenuItems className="ring-opacity-5 absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black focus:outline-none">
-                  <MenuItem>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      English
-                    </a>
-                  </MenuItem>
-                  <MenuItem>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Tiếng Việt
-                    </a>
-                  </MenuItem>
-                  <MenuItem>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      中文
-                    </a>
-                  </MenuItem>
+                <MenuItems className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg focus:outline-none">
+                  {languageOptions.map((option) => (
+                    <MenuItem key={option.code}>
+                      <button
+                        onClick={() => setLanguage(option.code)}
+                        className={`flex w-full items-center gap-3 px-4 py-2 text-left text-sm hover:bg-gray-100 ${
+                          language === option.code
+                            ? 'bg-gray-100 font-semibold'
+                            : 'text-gray-700'
+                        }`}
+                      >
+                        <Image
+                          src={option.flag}
+                          alt={`${option.label} flag`}
+                          width={16}
+                          height={12}
+                          className="rounded-sm"
+                        />
+                        {option.label}
+                      </button>
+                    </MenuItem>
+                  ))}
                 </MenuItems>
-              </Menu> */}
+              </Menu>
             </div>
           </div>
         </Container>

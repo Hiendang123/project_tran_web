@@ -1,3 +1,5 @@
+'use client'
+
 import { useId } from 'react'
 import Image from 'next/image'
 import clsx from 'clsx'
@@ -7,6 +9,7 @@ import { AppStoreLink } from '@/components/AppStoreLink'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { PhoneFrame } from '@/components/PhoneFrame'
+import { useLanguage } from '@/contexts/LanguageContext'
 import logoBbc from '@/images/logos/bbc.svg'
 import logoCbs from '@/images/logos/cbs.svg'
 import logoCnn from '@/images/logos/cnn.svg'
@@ -130,23 +133,19 @@ function PlayIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-const hereContent = {
-  title: 'SMART BREAKER EQUIPMENT',
-  description:
-    'This is a line of smart products developed and distributed by CNC ELECTRIC. This product is used in households, apartments, villas, hotels, restaurants, schools, and factories... The product is designed to be user-friendly, easy to install in existing electrical systems.',
-}
-
 export function Hero() {
+  const { t } = useLanguage()
+
   return (
     <div className="overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36">
       <Container>
         <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
           <div className="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
             <h1 className="text-4xl font-bold tracking-tight text-[#ba1c20]">
-              {hereContent.title}
+              {t('hero.title')}
             </h1>
             <p className="mt-6 text-lg text-gray-600">
-              {hereContent.description}
+              {t('hero.description')}
             </p>
             {/* <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <AppStoreLink />

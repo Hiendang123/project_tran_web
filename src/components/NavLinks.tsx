@@ -3,8 +3,11 @@
 import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { AnimatePresence, motion } from 'framer-motion'
+import { navigationItems } from '@/lib/navigation'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export function NavLinks() {
+  const { t } = useLanguage()
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   let timeoutRef = useRef<number | null>(null)
 
@@ -49,13 +52,7 @@ export function NavLinks() {
     }
   }
 
-  return [
-    ['Home', '/'],
-    ['Safety', '/#safety'],
-    ['Features', '/#features'],
-    ['Certificates', '/#certificates'],
-    ['FAQs', '/#faqs'],
-  ].map(([label, href], index) => (
+  return navigationItems.map(([label, href], index) => (
     <Link
       key={label}
       href={href}
@@ -87,7 +84,7 @@ export function NavLinks() {
           />
         )}
       </AnimatePresence>
-      <span className="relative z-10">{label}</span>
+      <span className="relative z-10">{t(label)}</span>
     </Link>
   ))
 }
